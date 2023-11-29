@@ -17,7 +17,7 @@ public class Clientes {
 
     private String nombre;
 
-    private int cuit;
+    private Long cuit;
 
     private String razonSocial;
 

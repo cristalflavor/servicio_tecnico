@@ -13,7 +13,7 @@ public class MesaDeAyudaService {
     public MesaDeAyudaService(ServiciosService servicioService) {
         this.serviciosService = servicioService;
     }
-    public List<Servicios> obtenerServiciosPorCliente(String razonSocial, int cuit) {
+    public List<Servicios> obtenerServiciosPorCliente(String razonSocial, Long cuit) {
         // Lógica para obtener servicios por cliente, podría incluir validaciones y llamadas al servicio de servicios
         return serviciosService.obtenerServiciosPorCliente(razonSocial, cuit);
     }

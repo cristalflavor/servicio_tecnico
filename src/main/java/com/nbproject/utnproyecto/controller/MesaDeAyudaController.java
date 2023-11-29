@@ -23,7 +23,7 @@ public class MesaDeAyudaController {
     @GetMapping("/servicios/{razonSocial}/{cuit}")
     public ResponseEntity<List<Servicios>> obtenerServiciosPorCliente(
             @PathVariable String razonSocial,
-            @PathVariable int cuit) {
+            @PathVariable Long cuit) {
         List<Servicios> servicios = mesaDeAyudaService.obtenerServiciosPorCliente(razonSocial, cuit);
         return ResponseEntity.ok(servicios);
     }

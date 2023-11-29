@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Clientes, Integer> {
-    Clientes findByRazonSocialAndCuit(String razonSocial, int cuit);
+    Clientes findByRazonSocialAndCuit(String razonSocial, Long cuit);
 }

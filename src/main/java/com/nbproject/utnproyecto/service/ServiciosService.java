@@ -21,7 +21,7 @@ public class ServiciosService {
         this.serviciosRepository = serviciosRepository;
     }
 
-    public List<Servicios> obtenerServiciosPorCliente(String razonSocial, int cuit){
+    public List<Servicios> obtenerServiciosPorCliente(String razonSocial, Long cuit){
         Clientes cliente = clienteRepository.findByRazonSocialAndCuit(razonSocial, cuit);
 
         if(cliente != null){
