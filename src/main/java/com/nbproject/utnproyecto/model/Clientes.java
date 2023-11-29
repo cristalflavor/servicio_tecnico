@@ -1,18 +1,17 @@
 package com.nbproject.utnproyecto.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+
 @Builder
 @Entity
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Data
+@Getter
 public class Clientes {
     @Id
-    private int idCliente;
+    private Integer idCliente;
 
     private String apellido;
 
@@ -24,4 +23,7 @@ public class Clientes {
 
     private boolean estado;
 
+    public Integer getIdCliente() {
+        return this.idCliente;
+    }
 }

@@ -1,6 +1,7 @@
 package com.nbproject.utnproyecto.service;
 
 import com.nbproject.utnproyecto.model.Clientes;
+import com.nbproject.utnproyecto.model.Servicios;
 import com.nbproject.utnproyecto.repository.ClienteRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
