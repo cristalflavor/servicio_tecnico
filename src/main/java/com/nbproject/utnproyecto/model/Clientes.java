@@ -10,6 +10,7 @@ import lombok.*;
 @Data
 @Getter
 public class Clientes {
+    @Getter
     @Id
     private Integer idCliente;
 
@@ -23,7 +24,4 @@ public class Clientes {
 
     private boolean estado;
 
-    public Integer getIdCliente() {
-        return this.idCliente;
-    }
 }

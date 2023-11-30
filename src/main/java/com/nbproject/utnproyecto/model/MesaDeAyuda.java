@@ -16,10 +16,9 @@ import lombok.RequiredArgsConstructor;
 @Data
 public class MesaDeAyuda {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idMesaDeAyuda;
+    private Integer idMesaDeAyuda;
 
     private String password;
-    private String apeliido;
+    private String apellido;
     private String nombre;
 }

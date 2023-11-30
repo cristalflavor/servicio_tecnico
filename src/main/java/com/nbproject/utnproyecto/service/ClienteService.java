@@ -1,34 +1,37 @@
 package com.nbproject.utnproyecto.service;
 
 import com.nbproject.utnproyecto.model.Clientes;
-import com.nbproject.utnproyecto.model.Servicios;
 import com.nbproject.utnproyecto.repository.ClienteRepository;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class ClienteService {
     @Autowired
-    private ClienteRepository clienteRepository;
+    private final ClienteRepository clienteRepository;
 
-    public Clientes addCliente(Clientes clientes){
-        Clientes clientes1 = null;
-        clientes1 = clienteRepository.save(clientes);
-        return clientes1;
-    };
+    public void saveCliente(Clientes cliente){
 
-    public void eliminarCliente(int idCliente){
-        clienteRepository.deleteById(idCliente);
+        clienteRepository.save(cliente);
     }
 
+    public void darDeBajaCliente(int idCliente){
+        clienteRepository.darDeBajaCliente(idCliente);
+    }
+    /*
+        POSTMAN
+        POST
+        http://localhost:9090/comercial/altaCliente
+    */
     public List<Clientes> getAllCliente(){
         List<Clientes> listClientes = clienteRepository.findAll();
-      return listClientes;
+        return listClientes;
     };
 
 

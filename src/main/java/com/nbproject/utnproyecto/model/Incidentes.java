@@ -1,10 +1,7 @@
 package com.nbproject.utnproyecto.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -13,6 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Data
+@Getter
 public class Incidentes {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,19 +18,19 @@ public class Incidentes {
 
     @ManyToOne
     @JoinColumn(name = "idCliente")
-    private Clientes cliente;
+    private Clientes idCliente;
 
     @ManyToOne
     @JoinColumn(name = "idAplicacion")
-    private Aplicaciones aplicacion;
+    private Aplicaciones idAplicacion;
 
     @ManyToOne
     @JoinColumn(name = "idEntorno")
-    private Entorno entorno;
+    private Entorno idEntorno;
 
     @ManyToOne
     @JoinColumn(name = "idTecnico")
-    private Tecnicos tecnico;
+    private Tecnicos idTecnico;
 
     private int tiempoResolucion;
     private LocalDate fechaVista;

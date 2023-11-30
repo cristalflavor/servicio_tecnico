@@ -1,6 +1,7 @@
 package com.nbproject.utnproyecto.controller;
 
 import com.nbproject.utnproyecto.model.Servicios;
+import com.nbproject.utnproyecto.model.Tecnicos;
 import com.nbproject.utnproyecto.service.MesaDeAyudaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,4 +28,24 @@ public class MesaDeAyudaController {
         List<Servicios> servicios = mesaDeAyudaService.obtenerServiciosPorCliente(razonSocial, cuit);
         return ResponseEntity.ok(servicios);
     }
+    /*
+        POSTMAN
+        Ejemplo:
+        GET
+        http://localhost:9090/serviciotecnico/mesadeayuda/tecnicos/1/1
+     */
+
+    @GetMapping("/tecnicos/{idAplicacion}/{idEntorno}")
+    public ResponseEntity<List<Tecnicos>> obtenerTecnicosParaServicio(
+            @PathVariable int idAplicacion,
+            @PathVariable int idEntorno) {
+        List<Tecnicos> tecnicos = mesaDeAyudaService.obtenerTecnicosParaServicio(idAplicacion, idEntorno);
+        return ResponseEntity.ok(tecnicos);
+    }
+    /*
+        POSTMAN
+        Ejemplo:
+        GET
+        http://localhost:9090/serviciotecnico/mesadeayuda/tecnicos/1/1
+     */
 }

@@ -1,25 +1,23 @@
 package com.nbproject.utnproyecto.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+
 @Builder
 @Entity
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Data
+@Getter
 public class Especialidades {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEspecialidad;
+    private Integer idEspecialidad;
 
     @ManyToOne
     @JoinColumn(name = "idEntorno")
     private Entorno entorno;
 
     @ManyToOne
-    @JoinColumn(name = "idCliente")
-    private Clientes cliente;
+    @JoinColumn(name = "idAplicacion")
+    private Aplicaciones aplicacion;
 }

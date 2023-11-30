@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class Entorno {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEntorno;
+    private Integer idEntorno;
 
     private String nombre;
 }
