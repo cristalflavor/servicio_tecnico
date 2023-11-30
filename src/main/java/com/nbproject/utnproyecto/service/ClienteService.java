@@ -24,11 +24,7 @@ public class ClienteService {
     public void darDeBajaCliente(int idCliente){
         clienteRepository.darDeBajaCliente(idCliente);
     }
-    /*
-        POSTMAN
-        POST
-        http://localhost:9090/comercial/altaCliente
-    */
+
     public List<Clientes> getAllCliente(){
         List<Clientes> listClientes = clienteRepository.findAll();
         return listClientes;

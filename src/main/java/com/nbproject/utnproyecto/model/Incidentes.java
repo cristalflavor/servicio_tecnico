@@ -13,27 +13,26 @@ import java.time.LocalDate;
 @Getter
 public class Incidentes {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idIncidente;
+    private Integer idIncidente;
 
     @ManyToOne
     @JoinColumn(name = "idCliente")
-    private Clientes idCliente;
+    private Clientes cliente;
 
     @ManyToOne
     @JoinColumn(name = "idAplicacion")
-    private Aplicaciones idAplicacion;
+    private Aplicaciones aplicacion;
 
     @ManyToOne
     @JoinColumn(name = "idEntorno")
-    private Entorno idEntorno;
+    private Entorno entorno;
 
     @ManyToOne
     @JoinColumn(name = "idTecnico")
-    private Tecnicos idTecnico;
+    private Tecnicos tecnico;
 
     private int tiempoResolucion;
-    private LocalDate fechaVista;
+    private LocalDate fechaVisita;
     private String complejidad;
     private boolean resuelto;
 }

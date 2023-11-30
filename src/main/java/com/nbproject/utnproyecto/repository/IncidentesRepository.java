@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IncidentesRepository extends JpaRepository<Incidentes, Integer> {
-    // Métodos personalizados si es necesario
+
 }
