@@ -5,12 +5,12 @@ import com.nbproject.utnproyecto.repository.RRHHRepository;
 import com.nbproject.utnproyecto.service.RRHHService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -58,11 +58,32 @@ public class RRHHController {
      */
 
     @GetMapping("/tecnico/masIncidentes/{fechaInicio}/{fechaFin}")
-    public List<Object[]> encontrarTecnicoConMasIncidentesEnRango(
-            @PathVariable("fechaInicio") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
-            @PathVariable("fechaFin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin) {
-        return rrhhService.encontrarTecnicoConMasIncidentesEnRango(fechaInicio, fechaFin);
+    public ResponseEntity<Map<Long, Tecnicos>> getTecnicoConMasIncidentesEnRango(
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin) {
+
+        List<Object[]> resultados = rrhhService.encontrarTecnicoConMasIncidentesEnRango(fechaInicio, fechaFin);
+
+        Map<Long, Tecnicos> tecnicosConIncidentes = new HashMap<>();
+
+        for (Object[] resultado : resultados) {
+
+            Integer idTecnico = (Integer)resultado[0];
+            Long totalIncidentes = (Long) resultado[1];
+
+            Optional<Tecnicos> tecnico = rrhhService.getTecnicoById(idTecnico);
+
+            if(tecnico.isPresent()){
+                tecnicosConIncidentes.put(totalIncidentes, tecnico.orElse(null));
+            }
+
+
+        }
+
+
+        return new ResponseEntity<>(tecnicosConIncidentes, HttpStatus.OK);
     }
+
 
 
 

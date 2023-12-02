@@ -1,10 +1,10 @@
 package com.nbproject.utnproyecto.service;
 
 import com.nbproject.utnproyecto.model.Incidentes;
-import com.nbproject.utnproyecto.model.IncidentesResueltos;
 import com.nbproject.utnproyecto.model.Tecnicos;
 import com.nbproject.utnproyecto.model.TiempoResolucion;
 import com.nbproject.utnproyecto.repository.RRHHRepository;
+import com.nbproject.utnproyecto.repository.TecnicosRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 @Service
 public class RRHHService {
     private final RRHHRepository rrhhRepository;
+    private final TecnicosRepository tecnicosRepository;
 
     public List<TiempoResolucion> obtenerTiempoResolucionTecnicos() {
         List<TiempoResolucion> resultados = rrhhRepository.obtenerTiempoResolucionTecnicos();
@@ -44,6 +45,10 @@ public class RRHHService {
 
     public List<Object[]> encontrarTecnicoConMasIncidentesEnRango(LocalDate fechaInicio, LocalDate fechaFin) {
         return rrhhRepository.findTecnicoConMasIncidentesEnRango(fechaInicio, fechaFin);
+    }
+
+    public Optional<Tecnicos> getTecnicoById(Integer idTecnico) {
+        return tecnicosRepository.findByIdTecnico(idTecnico);
     }
 
 
