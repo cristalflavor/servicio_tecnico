@@ -6,6 +6,7 @@ import com.nbproject.utnproyecto.model.Tecnicos;
 import com.nbproject.utnproyecto.repository.EspecialidadesRepository;
 import com.nbproject.utnproyecto.repository.IncidentesRepository;
 import com.nbproject.utnproyecto.repository.TecnicosRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ import java.util.Optional;
 public class MesaDeAyudaService {
     /*
         Acá dejé los Autowired para que me queden de ejemplo de cómo se usan
-        sé que con @AllArgsConstructor me ahorraría todo esto
+        sé que con annotations se ahorra esto!
 
      */
     @Autowired

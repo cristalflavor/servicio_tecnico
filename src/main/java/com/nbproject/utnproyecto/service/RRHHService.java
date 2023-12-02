@@ -51,5 +51,13 @@ public class RRHHService {
         return tecnicosRepository.findByIdTecnico(idTecnico);
     }
 
+    /*
+    No llegué con esto
+
+    public List<Object[]> encontrarTecnicoConMasIncidentesEnRangoConEspecialidad(
+            LocalDate fechaInicio, LocalDate fechaFin, Integer idEspecialidad) {
+        return rrhhRepository.findTecnicoConMasIncidentesEnRangoConEspecialidad(fechaInicio, fechaFin, idEspecialidad);
+    }*/
+
 
 }

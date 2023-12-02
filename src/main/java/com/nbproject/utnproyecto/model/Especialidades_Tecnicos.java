@@ -1,9 +1,6 @@
 package com.nbproject.utnproyecto.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Builder
@@ -12,6 +9,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @Data
 @Getter
+@Table(name = "especialidades_tecnicos")
 public class Especialidades_Tecnicos {
 
     @Id

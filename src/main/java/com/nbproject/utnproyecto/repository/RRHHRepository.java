@@ -28,5 +28,26 @@ public interface RRHHRepository extends JpaRepository<Incidentes, Integer> {
             @Param("fechaInicio") LocalDate fechaInicio,
             @Param("fechaFin") LocalDate fechaFin);
 
+    /*
+
+    No llegué con esto
+
+    @Query("SELECT t.idTecnico, COUNT(i) AS totalIncidentes " +
+            "FROM Tecnicos t " +
+            "JOIN t.incidentes i " +
+            "JOIN t.especialidades_Tecnicos et " + // Usar el nombre de la entidad
+            "JOIN et.especialidad e " +
+            "WHERE i.resuelto = true " +
+            "AND i.fechaVisita BETWEEN :fechaInicio AND :fechaFin " +
+            "AND e.idEspecialidad = :idEspecialidad " + // Usar el nombre del atributo
+            "GROUP BY t.idTecnico " +
+            "ORDER BY totalIncidentes DESC")
+    List<Object[]> findTecnicoConMasIncidentesEnRangoConEspecialidad(
+            @Param("fechaInicio") LocalDate fechaInicio,
+            @Param("fechaFin") LocalDate fechaFin,
+            @Param("idEspecialidad") Integer idEspecialidad);*/
+
+
+
 
 }

@@ -26,4 +26,9 @@ public class Tecnicos {
     @OneToMany(mappedBy = "tecnico", cascade = CascadeType.ALL)
     private List<Incidentes> incidentes;
 
+    /*
+    No llegué con esto
+
+    @OneToMany(mappedBy = "tecnico", cascade = CascadeType.ALL)
+    private List<Especialidades_Tecnicos> especialidades_Tecnicos;*/
 }

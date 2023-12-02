@@ -15,7 +15,6 @@ com\nbproject\utnproyecto\repository\Especialidades_TecnicosRepository.class
 com\nbproject\utnproyecto\model\TiempoResolucion.class
 com\nbproject\utnproyecto\service\TecnicosService.class
 com\nbproject\utnproyecto\model\Aplicaciones$AplicacionesBuilder.class
-com\nbproject\utnproyecto\model\IncidentesResueltos.class
 com\nbproject\utnproyecto\model\Comercial$ComercialBuilder.class
 com\nbproject\utnproyecto\model\Especialidades_Tecnicos.class
 com\nbproject\utnproyecto\model\Tecnicos.class

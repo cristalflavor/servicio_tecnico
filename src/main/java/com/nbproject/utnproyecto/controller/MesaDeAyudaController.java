@@ -1,13 +1,13 @@
 package com.nbproject.utnproyecto.controller;
 
-import com.nbproject.utnproyecto.model.Incidentes;
-import com.nbproject.utnproyecto.model.Servicios;
-import com.nbproject.utnproyecto.model.Tecnicos;
+import com.nbproject.utnproyecto.model.*;
 import com.nbproject.utnproyecto.service.IncidentesService;
 import com.nbproject.utnproyecto.service.MesaDeAyudaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -19,6 +19,7 @@ import java.util.List;
 public class MesaDeAyudaController {
 
     private final MesaDeAyudaService mesaDeAyudaService;
+    private final JavaMailSender javaMailSender;
     private final IncidentesService incidentesService;
 
     @GetMapping("/servicios/{razonSocial}/{cuit}")
@@ -129,12 +130,50 @@ public class MesaDeAyudaController {
      */
 
 
-    @PostMapping("/tecnicos/informarIncidente")
+    /*@PostMapping("/tecnicos/informarIncidente")
     public ResponseEntity<String> informarIncidente(@RequestBody Incidentes incidente){
         mesaDeAyudaService.informarIncidente(incidente);
 
         return ResponseEntity.ok("Incidente informado al técnico");
+    }*/
+
+    @PostMapping("/tecnicos/informarIncidente")
+    public ResponseEntity<String> informarIncidente(@RequestBody Incidentes incidente) {
+        mesaDeAyudaService.informarIncidente(incidente);
+
+        String contacto = incidente.getTecnico().getContacto();
+
+        if (contacto.contains("@")) {
+            // El contacto es un correo electrónico
+            sendEmail(incidente);
+            return ResponseEntity.ok("Incidente informado al técnico. Se envió un correo electrónico.");
+        } else {
+            // El contacto es un número de teléfono
+            return ResponseEntity.ok("Incidente informado al técnico. Se envió un mensaje en el body.");
+        }
     }
+
+    private void sendEmail(Incidentes incidente) {
+        Tecnicos tecnico = incidente.getTecnico();
+        Clientes cliente = incidente.getCliente();
+        Aplicaciones aplicacion = incidente.getAplicacion();
+        Entorno entorno = incidente.getEntorno();
+
+        String body = "Hola, " + tecnico.getApellido() + ", " + tecnico.getNombre() + ". Debe dirigirse a la empresa " + cliente.getRazonSocial() +
+                " para solucionar el incidente Nº:" + incidente.getIdIncidente() + ".\nEl cliente " +
+                cliente.getApellido() + ", " + cliente.getNombre() + " lo estará esperando el día " + incidente.getFechaVisita() +
+                " por problemas referidos a la aplicación " + aplicacion.getNombre() + " en el entorno " +
+                entorno.getNombre() + ".\nEl tiempo de resolución estimado es de " + incidente.getTiempoResolucion() +
+                " horas.\n\nMesa de Ayuda de UTN Proyecto";
+
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setFrom("mesa-de-ayuda@utnproyecto.com");
+        mail.setTo(tecnico.getContacto());
+        mail.setSubject("Asunto del correo");
+        mail.setText(body);
+        javaMailSender.send(mail);
+    }
+
 
 
     /*
@@ -145,7 +184,8 @@ public class MesaDeAyudaController {
         CICLO DE VIDA: MESA DE AYUDA informa el INCIDENTES al TECNICOS elegido
         Informarlo supone crear un registro en la tabla incidentes la cual tiene toda la información
         necesaria: la fechaVisita, tiempoResolucion, si esta resuelto o no, el idTecnico, etc
-        AGREGAR MÉTODOS PARA DIFERENCIAR MAIL DE WHATSAPP
+        Si en el campo "contacto" hay un mail se enviará un mail al técnico con mailtrap
+        Sino, se enviará un SMS que en realidad es un mensaje en el body
 
         Se puede utilizar este ejemplo:
         POSTMAN

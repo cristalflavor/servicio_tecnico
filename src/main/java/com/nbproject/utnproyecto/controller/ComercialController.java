@@ -33,6 +33,7 @@ public class ComercialController {
             "nombre": "Romina Luna",
             "cuit": 22246772829,
             "razonSocial": "UTN Programming",
+            "mail": "utn-programing@utn.com",
             "estado": 1
         }
 

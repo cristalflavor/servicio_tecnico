@@ -4,6 +4,7 @@ import com.nbproject.utnproyecto.model.*;
 import com.nbproject.utnproyecto.repository.RRHHRepository;
 import com.nbproject.utnproyecto.service.RRHHService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.Hibernate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -84,6 +85,36 @@ public class RRHHController {
         return new ResponseEntity<>(tecnicosConIncidentes, HttpStatus.OK);
     }
 
+    /*
+    No llegué con esto
+
+    @GetMapping("/tecnico/masIncidentes/porEspecialidad/{fechaInicio}/{fechaFin}")
+    public ResponseEntity<Map<Long, Tecnicos>> getTecnicoConMasIncidentesEnRangoConEspecialidad(
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin,
+            @RequestParam Integer idEspecialidad) {
+
+        List<Object[]> resultados = rrhhService.encontrarTecnicoConMasIncidentesEnRangoConEspecialidad(fechaInicio, fechaFin, idEspecialidad);
+
+        Map<Long, Tecnicos> tecnicosConIncidentes = new HashMap<>();
+
+        for (Object[] resultado : resultados) {
+
+            Integer idTecnico = (Integer)resultado[0];
+            Long totalIncidentes = (Long) resultado[1];
+
+            Optional<Tecnicos> tecnico = rrhhService.getTecnicoById(idTecnico);
+
+            if(tecnico.isPresent()){
+                tecnicosConIncidentes.put(totalIncidentes, tecnico.orElse(null));
+            }
+
+
+        }
+
+
+        return new ResponseEntity<>(tecnicosConIncidentes, HttpStatus.OK);
+    }*/
 
 
 

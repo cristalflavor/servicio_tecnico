@@ -1,9 +1,5 @@
 package com.nbproject.utnproyecto.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
 import com.nbproject.utnproyecto.model.Especialidades_Tecnicos;
 import com.nbproject.utnproyecto.model.Incidentes;
 import com.nbproject.utnproyecto.model.Tecnicos;
@@ -12,8 +8,12 @@ import com.nbproject.utnproyecto.repository.IncidentesRepository;
 import com.nbproject.utnproyecto.repository.TecnicosRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
