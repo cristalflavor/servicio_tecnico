@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2023 a las 23:51:44
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Tiempo de generación: 02-12-2023 a las 02:25:25
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.1.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `aplicaciones` (
   `idAplicacion` int(2) NOT NULL,
   `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `aplicaciones`
@@ -53,26 +54,28 @@ CREATE TABLE `clientes` (
   `nombre` varchar(50) NOT NULL,
   `cuit` bigint(11) NOT NULL,
   `razonSocial` varchar(50) NOT NULL,
+  `mail` varchar(100) NOT NULL,
   `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`idCliente`, `apellido`, `nombre`, `cuit`, `razonSocial`, `estado`) VALUES
-(1556, 'Diaz', 'Ángel Antonio', 20287442569, 'Solarix Tech SA', 1),
-(1557, 'Robledo', 'Lucía Elmira', 16245454629, 'Vinchuca Records', 1),
-(1558, 'Belloso', 'Pedro Ramiro', 22233449574, 'T&R Soluciones', 1),
-(1559, 'Talamonti', 'Inés Gimena', 25392548111, 'Chap', 1),
-(1560, 'Constantini', 'Lidia Erminda', 26415856587, 'AZ-Cloud-Services', 1),
-(1561, 'Zanabria', 'Gustavo Manuel', 21269871232, 'Oficina Virtual Argentina', 1),
-(1562, 'Panuchi', 'Matilde Vanina', 18243328528, 'Pyramidal Scam SRL', 1),
-(1563, 'Fausto', 'Juan Pablo', 24361597530, 'El Rey del Coso', 1),
-(1564, 'Rizzi', 'Rebeca Rocío', 19276612551, 'Empanadas Salteñas & cryptos', 1),
-(1565, 'Flosser', 'Daniela Anahí', 22295141750, 'P&G&R&T Vasos plásticos', 1),
-(1566, 'Soto', 'Raúl Armando', 27392020203, 'Bitter Bet, Bett...', 1),
-(1567, 'Quinp', 'Sandro Timoteo', 25386452137, 'BOLK SA', 1);
+INSERT INTO `clientes` (`idCliente`, `apellido`, `nombre`, `cuit`, `razonSocial`, `mail`, `estado`) VALUES
+(1556, 'Diaz', 'Ángel Antonio', 20287442569, 'Solarix Tech SA', 'angant@gmail.com', 1),
+(1557, 'Robledo', 'Lucía Elmira', 16245454629, 'Vinchuca Records', 'vinchucarecords@hotmail.com', 1),
+(1558, 'Belloso', 'Pedro Ramiro', 22233449574, 'T&R Soluciones', 'tyrsoluciones@tr.com', 1),
+(1559, 'Talamonti', 'Inés Gimena', 25392548111, 'Chap', 'chapservice@chap.com', 1),
+(1560, 'Constantini', 'Lidia Erminda', 26415856587, 'AZ-Cloud-Services', 'az-cloud@az.com', 1),
+(1561, 'Zanabria', 'Gustavo Manuel', 21269871232, 'Oficina Virtual Argentina', 'oficinavirtual@hotmail.com', 1),
+(1562, 'Panuchi', 'Matilde Vanina', 18243328528, 'Pyramidal Scam SRL', 'pyramidal@gmail.com', 1),
+(1563, 'Fausto', 'Juan Pablo', 24361597530, 'El Rey del Coso', 'reycoso@hotmail.com', 1),
+(1564, 'Rizzi', 'Rebeca Rocío', 19276612551, 'Empanadas Salteñas & cryptos', 'empanaditas@gmail.com', 1),
+(1565, 'Flosser', 'Daniela Anahí', 22295141750, 'P&G&R&T Vasos plásticos', 'plasticos@gmail.com', 1),
+(1566, 'Soto', 'Raúl Armando', 27392020203, 'Bitter Bet, Bett...', 'bit@bitter.bit', 1),
+(1567, 'Quinp', 'Sandro Timoteo', 25386452137, 'BOLK SA', 'bolk@bolksa.com', 1),
+(1568, 'Cardozo', 'Luis Enrique', 16153775883, 'Aceituna Virtual', 'aceitunardi@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -85,7 +88,7 @@ CREATE TABLE `comercial` (
   `password` varchar(8) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `comercial`
@@ -104,7 +107,7 @@ INSERT INTO `comercial` (`idComercial`, `password`, `apellido`, `nombre`) VALUES
 CREATE TABLE `entorno` (
   `idEntorno` int(2) NOT NULL,
   `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `entorno`
@@ -126,7 +129,7 @@ CREATE TABLE `especialidades` (
   `idEspecialidad` int(2) NOT NULL,
   `idEntorno` int(2) NOT NULL,
   `idAplicacion` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `especialidades`
@@ -148,25 +151,26 @@ INSERT INTO `especialidades` (`idEspecialidad`, `idEntorno`, `idAplicacion`) VAL
 --
 
 CREATE TABLE `especialidades_tecnicos` (
+  `idEspecialidades_tecnicos` int(4) NOT NULL,
   `idTecnico` int(4) NOT NULL,
   `idEspecialidad` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `especialidades_tecnicos`
 --
 
-INSERT INTO `especialidades_tecnicos` (`idTecnico`, `idEspecialidad`) VALUES
-(2556, 1),
-(2556, 2),
-(2557, 7),
-(2558, 3),
-(2559, 4),
-(2560, 2),
-(2560, 4),
-(2560, 6),
-(2561, 1),
-(2561, 5);
+INSERT INTO `especialidades_tecnicos` (`idEspecialidades_tecnicos`, `idTecnico`, `idEspecialidad`) VALUES
+(1, 2556, 1),
+(2, 2556, 2),
+(3, 2557, 7),
+(4, 2558, 3),
+(5, 2559, 4),
+(6, 2560, 2),
+(7, 2560, 4),
+(8, 2560, 6),
+(9, 2561, 1),
+(10, 2561, 5);
 
 -- --------------------------------------------------------
 
@@ -184,7 +188,7 @@ CREATE TABLE `incidentes` (
   `fechaVisita` date NOT NULL,
   `complejidad` varchar(50) NOT NULL,
   `resuelto` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `incidentes`
@@ -216,7 +220,7 @@ INSERT INTO `incidentes` (`idIncidente`, `idCliente`, `idAplicacion`, `idEntorno
 (3578, 1563, 1, 2, 2558, 3, '2023-11-03', 'ALTA', 1),
 (3579, 1566, 2, 1, 2556, 4, '2023-11-04', 'ALTA', 1),
 (3580, 1565, 3, 4, 2557, 1, '2023-11-04', 'BAJA', 1),
-(3581, 1557, 2, 2, 2560, 2, '2023-11-06', 'BAJA', 1),
+(3581, 1557, 2, 2, 2558, 3, '2023-11-04', 'ALTA', 1),
 (3582, 1560, 2, 3, 2560, 1, '2023-11-07', 'BAJA', 1),
 (3583, 1565, 2, 2, 2559, 1, '2023-11-07', 'BAJA', 1),
 (3584, 1562, 1, 3, 2561, 2, '2023-11-08', 'BAJA', 1),
@@ -237,7 +241,7 @@ CREATE TABLE `mesadeayuda` (
   `password` varchar(8) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `mesadeayuda`
@@ -258,7 +262,7 @@ CREATE TABLE `rrhh` (
   `password` varchar(8) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `rrhh`
@@ -279,7 +283,7 @@ CREATE TABLE `servicios` (
   `idAplicacion` int(2) NOT NULL,
   `idEntorno` int(2) NOT NULL,
   `idCliente` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `servicios`
@@ -324,7 +328,7 @@ CREATE TABLE `tecnicos` (
   `contacto` varchar(30) NOT NULL,
   `disponible` tinyint(1) NOT NULL,
   `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tecnicos`
@@ -333,7 +337,7 @@ CREATE TABLE `tecnicos` (
 INSERT INTO `tecnicos` (`idTecnico`, `apellido`, `nombre`, `contacto`, `disponible`, `estado`) VALUES
 (2556, 'Ruggeri', 'Horacio Jeremías', '3413208245', 1, 1),
 (2557, 'De Michelis', 'Miriam Noelia', 'mirimichelis@gmail.com', 1, 1),
-(2558, 'Kossman', 'David Sebastián', 'kossmantec@hotmail.com', 0, 1),
+(2558, 'Kossman', 'David Sebastián', 'kossmantec@hotmail.com', 1, 1),
 (2559, 'Gerardi', 'Nelson Alfredo', '1123219233', 1, 1),
 (2560, 'Del Pietro', 'Fernando Joaquín', '1164564580', 0, 1),
 (2561, 'Mamana', 'Alicia María José', '3413208245', 1, 1);
@@ -378,6 +382,7 @@ ALTER TABLE `especialidades`
 -- Indices de la tabla `especialidades_tecnicos`
 --
 ALTER TABLE `especialidades_tecnicos`
+  ADD PRIMARY KEY (`idEspecialidades_tecnicos`),
   ADD KEY `especialidades_tecnicos_ibfk_1` (`idTecnico`),
   ADD KEY `especialidades_tecnicos_ibfk_2` (`idEspecialidad`);
 

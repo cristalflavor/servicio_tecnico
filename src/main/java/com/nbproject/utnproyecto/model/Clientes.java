@@ -22,6 +22,8 @@ public class Clientes {
 
     private String razonSocial;
 
+    private String mail;
+
     private boolean estado;
 
 }

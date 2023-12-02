@@ -35,4 +35,5 @@ public class Incidentes {
     private LocalDate fechaVisita;
     private String complejidad;
     private boolean resuelto;
+
 }

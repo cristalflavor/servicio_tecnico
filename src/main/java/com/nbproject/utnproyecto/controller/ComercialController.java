@@ -25,8 +25,8 @@ public class ComercialController {
         POSTMAN
         POST
         http://localhost:9090/serviciotecnico/comercial/altaCliente
-        En body, elegir raw, y luego JSON y enviar por ejemplo:
 
+        En body, elegir raw, y luego JSON y enviar por ejemplo:
         {
             "idCliente": 1569,
             "apellido": "Elanga",
